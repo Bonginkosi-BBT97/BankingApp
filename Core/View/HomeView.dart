@@ -11,6 +11,9 @@ ViewModel viewModel = ViewModel();
     var balance = account["Balance"]; 
 
 viewModel.showAccountDetails("$accountNo", "$balance"); 
+viewModel.desposit("$balance", "1000");
+viewModel.showAccountDetails("$accountNo", "$balance"); 
+
     
      }
 
