@@ -3,6 +3,7 @@ import '../../AccountsModel.dart';
 class AuthenticationViewModel {
    
    AccountsModel accounts = AccountsModel();
+     Map<String, String> account = {};
 
     accountIsTrue(String accountNumber) {
 
@@ -24,9 +25,12 @@ class AuthenticationViewModel {
 
         if (accountNumber == accounts.absaAccount["AccountNo"] && pinNumber == accounts.absaAccount["Pin"] ) {
              print("Correct ABSA Pin Number"); 
+             account = accounts.absaAccount;
+
         return true;
         } else if (accountNumber == accounts.fnbAccount["AccountNo"] && pinNumber == accounts.fnbAccount["Pin"]) {
                print("Correct FNB Pin Number"); 
+               account = accounts.fnbAccount;
                return true;
         }else {
            print("Incorrect Pin Number");

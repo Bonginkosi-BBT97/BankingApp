@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import '../../Core/View/HomeView.dart';
 import '../ViewModel/AuthenticationViewModel.dart';
 
 void main() {
@@ -16,7 +17,7 @@ if (authenticationViewModel.accountIsTrue("$accountNumber") == true) {
 
   if (authenticationViewModel.pinNumberIsTrue("$accountNumber", "$enteredPin") == true) {
 
-     print("Authentication Details: Acc = $accountNumber, Pin = $enteredPin");
+    HomeView(authenticationViewModel.account);
   } 
  
  }
