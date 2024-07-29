@@ -25,22 +25,21 @@ ViewModel(Map<String, String> account){
     print("Acc Balance: R $amount");
   }
 
-  String desposit(String currentAmount, double depositAmount) {
-      double current = double.parse(currentAmount);
+   desposit( double depositAmount) {
+      double current = double.parse(amount);
       double newAmount = current + depositAmount;
 
       print("R $depositAmount has been deposited");
-      return newAmount.toStringAsFixed(2);
+      amount = newAmount.toString();
    }
 
-  String withdraw(String currentAmount, String withdrawAmount) {
-     double current = double.parse(currentAmount);
+   withdraw( String withdrawAmount) {
+     double current = double.parse(amount);
       double withdraw = double.parse(withdrawAmount);
       double newAmount = current - withdraw;
 
       print("R $withdrawAmount has been withdrawn");
-      print("The current amount is now R ${newAmount.toStringAsFixed(2)}");
-      return newAmount.toStringAsFixed(2);
+      amount = newAmount.toStringAsFixed(0);
    }
 
 }
