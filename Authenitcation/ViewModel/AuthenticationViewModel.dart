@@ -5,36 +5,26 @@ class AuthenticationViewModel {
    AccountsModel accounts = AccountsModel();
      Map<String, String> account = {};
 
-    accountIsTrue(String accountNumber) {
-
-     if(accountNumber == accounts.absaAccount["AccountNo"]) {
-        print("Correct ABSA Account Number"); 
+     bool accountIsTrue(String accountNumber) {
+    for (var account in accounts.allAccounts) {
+      if (accountNumber == account["AccountNo"]) {
+        print("Correct ${account['BankAccountName']} Account Number");
         return true;
-
-     } else if (accountNumber == accounts.fnbAccount["AccountNo"])  {
-      print("Correct FNB Account Number"); 
-        return true;
-
-     }else {
-      print("Incorrect Account Number");
-      return false; 
-     }
+      }
     }
+    print("Incorrect Account Number");
+    return false;
+  }
 
-    pinNumberIsTrue(String accountNumber, String pinNumber) {
-
-        if (accountNumber == accounts.absaAccount["AccountNo"] && pinNumber == accounts.absaAccount["Pin"] ) {
-             print("Correct ABSA Pin Number"); 
-             account = accounts.absaAccount;
-
+  bool pinNumberIsTrue(String accountNumber, String pinNumber) {
+    for (var account in accounts.allAccounts) {
+      if (accountNumber == account["AccountNo"] && pinNumber == account["Pin"]) {
+        print("Correct ${account['BankAccountName']} Pin Number");
+        this.account = account;
         return true;
-        } else if (accountNumber == accounts.fnbAccount["AccountNo"] && pinNumber == accounts.fnbAccount["Pin"]) {
-               print("Correct FNB Pin Number"); 
-               account = accounts.fnbAccount;
-               return true;
-        }else {
-           print("Incorrect Pin Number");
-           return false; 
-        }
+      }
     }
+    print("Incorrect Pin Number");
+    return false;
+  }
 }
