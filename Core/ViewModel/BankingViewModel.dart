@@ -1,10 +1,8 @@
 // Show All Bank Details 
-// Deposit into the account 
+// Withdraw
 // Transfer to another acount 
 
-import 'dart:ffi';
 import '../../Authenitcation/View/Login.dart';
-import '../ViewModel/BankingViewModel.dart';
 import 'dart:io';
 
 class ViewModel {
@@ -36,17 +34,17 @@ ViewModel(Map<String, String> account){
       _amount = newAmount.toString();
    }
 
-   void _withdraw( String withdrawAmount) {
+   void _transfer( String transferAccountNo,String transferAmount) {
      double current = double.parse(_amount);
-      double withdraw = double.parse(withdrawAmount);
-      double newAmount = current - withdraw;
+      double transfer = double.parse(transferAmount);
+      double newAmount = current - transfer;
 
-      print("R $withdrawAmount has been withdrawn");
+      print("R $transferAmount has been transfered to account no: $transferAccountNo");
       _amount = newAmount.toString();
    }
   void _instructions() {
-    print("Enter 1 to withdraw");
-    print("Enter 2 to deposit");
+    print("Enter 1 to transfer");
+    print("Enter 2 to withdraw");
     print("Enter 0 to exit");
   }
 
@@ -56,10 +54,13 @@ ViewModel(Map<String, String> account){
       String? input = stdin.readLineSync(); 
       switch (input) {
         case '1':
-          print('Enter amount to withdraw:');
+        print('Enter the account number to transfer to:');
+          String? transferAccountNo = stdin.readLineSync();
+          print('Enter amount to transfer:');
           String? withdrawAmount = stdin.readLineSync();
-          if (withdrawAmount != null) {
-            _withdraw(withdrawAmount);
+
+          if (transferAccountNo != null &&withdrawAmount != null) {
+            _transfer(transferAccountNo,withdrawAmount);
           }
           break;
         case '2':
