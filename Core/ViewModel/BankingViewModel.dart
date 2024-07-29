@@ -3,6 +3,7 @@
 // Transfer to another acount 
 
 import 'dart:ffi';
+import '../../Authenitcation/View/Login.dart';
 import '../ViewModel/BankingViewModel.dart';
 import 'dart:io';
 
@@ -69,15 +70,14 @@ ViewModel(Map<String, String> account){
            desposit(depositAmount);
           }
           break;
-          case '3':
-        showAccountDetails();
-          break;
-        case '0':
-          print('Exiting...');
+          case '0':
+       print('Exiting...');
+          main();
           return;
         default:
           print('Invalid input, please enter 1, 2, 3, or 0.');
       }
+      showAccountDetails();
    }
   }
 }
