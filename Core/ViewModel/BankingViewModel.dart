@@ -4,7 +4,7 @@
 
 import 'dart:ffi';
 import '../ViewModel/BankingViewModel.dart';
-
+import 'dart:io';
 
 class ViewModel {
  Map<String, String> account = {};
@@ -23,7 +23,7 @@ ViewModel(Map<String, String> account){
     print("Account Name: $accountName");
     print("Account No: $accountNumber");
     print("Acc Balance: R $amount");
-    instructions();
+    handleUserInput();
   }
 
    void desposit( String depositAmount) {
@@ -41,11 +41,43 @@ ViewModel(Map<String, String> account){
       double newAmount = current - withdraw;
 
       print("R $withdrawAmount has been withdrawn");
-      amount = newAmount.toStringAsFixed(0);
+      amount = newAmount.toString();
    }
   void instructions() {
     print("Enter 1 to withdraw");
     print("Enter 2 to deposit");
-    print("Enter 3 to exit");
+    print("Enter 3 to view account details");
+    print("Enter 0 to exit");
+  }
+
+  void handleUserInput() {
+     while (true) {
+      instructions();
+      String? input = stdin.readLineSync(); 
+      switch (input) {
+        case '1':
+          print('Enter amount to withdraw:');
+          String? withdrawAmount = stdin.readLineSync();
+          if (withdrawAmount != null) {
+            withdraw(withdrawAmount);
+          }
+          break;
+        case '2':
+          print('Enter amount to deposit:');
+          String? depositAmount = stdin.readLineSync();
+          if (depositAmount != null) {
+           desposit(depositAmount);
+          }
+          break;
+          case '3':
+        showAccountDetails();
+          break;
+        case '0':
+          print('Exiting...');
+          return;
+        default:
+          print('Invalid input, please enter 1, 2, 3, or 0.');
+      }
+   }
   }
 }
