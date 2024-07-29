@@ -23,17 +23,19 @@ ViewModel(Map<String, String> account){
     print("Account Name: $accountName");
     print("Account No: $accountNumber");
     print("Acc Balance: R $amount");
+    instructions();
   }
 
-   desposit( double depositAmount) {
+   void desposit( String depositAmount) {
       double current = double.parse(amount);
-      double newAmount = current + depositAmount;
+      double deposit = double.parse(depositAmount);
+      double newAmount = current + deposit;
 
       print("R $depositAmount has been deposited");
       amount = newAmount.toString();
    }
 
-   withdraw( String withdrawAmount) {
+   void withdraw( String withdrawAmount) {
      double current = double.parse(amount);
       double withdraw = double.parse(withdrawAmount);
       double newAmount = current - withdraw;
@@ -41,5 +43,9 @@ ViewModel(Map<String, String> account){
       print("R $withdrawAmount has been withdrawn");
       amount = newAmount.toStringAsFixed(0);
    }
-
+  void instructions() {
+    print("Enter 1 to withdraw");
+    print("Enter 2 to deposit");
+    print("Enter 3 to exit");
+  }
 }
