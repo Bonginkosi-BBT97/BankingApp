@@ -72,7 +72,7 @@ ViewModel(Map<String, String> account){
           break;
           case '0':
        print('Exiting...');
-          main();
+         Login().authenticate();
           return;
         default:
           print('Invalid input, please enter 1, 2, or 0.');
