@@ -1,12 +1,14 @@
 import 'dart:math';
 
+import 'package:banking_app/authentication/view/LoginScreen.dart';
 import 'package:flutter/material.dart';
-import 'authentication/view/login.dart';
 
-// void main() {
+void main() {
 
-//  // runApp(const MyApp());
-// }
+  runApp(MaterialApp(
+    home: LoginScreen(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

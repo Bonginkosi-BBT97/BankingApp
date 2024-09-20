@@ -2,14 +2,17 @@
 // Withdraw
 // Transfer to another acount 
 
-import '../../authentication/view/login.dart';
 import 'dart:io';
+
+import 'package:banking_app/authentication/view_model/authentication_view_model.dart';
 
 class ViewModel {
  Map<String, String> _account = {};
 late String _accountName;
 late String _accountNumber; 
 late String _amount;
+
+AuthenticationViewModel authenticationViewModel = AuthenticationViewModel();
 
 ViewModel(Map<String, String> account){
   this._account = account;
@@ -72,7 +75,7 @@ ViewModel(Map<String, String> account){
           break;
           case '0':
        print('Exiting...');
-         Login().authenticate();
+       authenticationViewModel.authenticate();
           return;
         default:
           print('Invalid input, please enter 1, 2, or 0.');
