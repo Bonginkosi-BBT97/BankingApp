@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:banking_app/authentication/view/LoginScreen.dart';
+import 'package:banking_app/authentication/view/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

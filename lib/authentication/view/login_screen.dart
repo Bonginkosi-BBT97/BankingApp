@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'confirm_button.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -41,7 +42,15 @@ final TextEditingController pinController =  TextEditingController();
           border: OutlineInputBorder(),
           hintText: 'Enter your PIN',
         ),
-      )
+      ),
+      const Spacer(),
+      ConfirmButton(
+        onPressed: () {
+          final account = accountController.text;
+          final pin = pinController.text;
+          print('Account: $account, PIN: $pin');
+        } 
+      ),
     ],
    ),
    ),
