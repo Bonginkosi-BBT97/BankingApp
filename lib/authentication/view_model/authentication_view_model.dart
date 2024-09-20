@@ -6,27 +6,12 @@ class AuthenticationViewModel {
    AccountsModel accounts = AccountsModel();
      Map<String, String> account = {};
 
- void authenticate() {
-    
-    while (true) {
-      print("Please Enter Your Account Number");
-
-      var accountNumber = stdin.readLineSync();
-
-      if (accountIsTrue("$accountNumber") == true) {
-        print("Please Enter Your Pin");
-
-        var enteredPin = stdin.readLineSync();
-
-        if (pinNumberIsTrue(
-                "$accountNumber", "$enteredPin") ==
-            true) {
-          //HomeView(authenticationViewModel.account);
-          print("Show the Home view and pass in the account info");
-          break;
-        }
-      }
+ bool authenticate(String accountNumber, String pin) {
+    if (accountIsTrue(accountNumber) && pinNumberIsTrue(accountNumber, pin)) {
+      print("Authentication successful");
+      return true;
     }
+    return false;
   }
 
      bool accountIsTrue(String accountNumber) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:banking_app/authentication/view_model/authentication_view_model.dart';
 import 'confirm_button.dart';
 
 
@@ -6,6 +7,7 @@ class LoginScreen extends StatelessWidget {
 
 final TextEditingController accountController = TextEditingController();
 final TextEditingController pinController =  TextEditingController();
+final AuthenticationViewModel authenticationViewModel =  AuthenticationViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ final TextEditingController pinController =  TextEditingController();
       ),
       TextField(
         controller: pinController,
-        obscureText: true, // Hides the PIN input,
+        obscureText: true, 
         keyboardType: TextInputType.number,
         decoration: const InputDecoration(
           border: OutlineInputBorder(),
@@ -48,8 +50,33 @@ final TextEditingController pinController =  TextEditingController();
         onPressed: () {
           final account = accountController.text;
           final pin = pinController.text;
-          print('Account: $account, PIN: $pin');
-        } 
+
+        bool isAuthenticated = authenticationViewModel.authenticate(account, pin);
+
+        if (!isAuthenticated) {
+          showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: const Text('Error'),
+                        content: const Text('Incorrect Account or PIN.'),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // Dismiss the dialog
+                              accountController.clear();
+                              pinController.clear();
+                            },
+                            child: const Text('Try Again'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                } else {
+                  print("Authentication Passed");
+                }
+        }
       ),
     ],
    ),
