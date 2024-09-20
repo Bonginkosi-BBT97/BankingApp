@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:banking_app/authentication/view/login_screen.dart'; // Import your LoginScreen
 
 class ProfileTab extends StatelessWidget {
   @override
@@ -43,6 +44,10 @@ class ProfileTab extends StatelessWidget {
             label: 'Sign Out',
             onPressed: () {
               // Handle Sign Out
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => LoginScreen()),
+                (Route<dynamic> route) => false,
+              );
             },
           ),
           const SizedBox(height: 12),
