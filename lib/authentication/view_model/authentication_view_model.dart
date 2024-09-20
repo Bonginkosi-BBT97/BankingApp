@@ -1,5 +1,4 @@
 import '../../accounts_model.dart';
-import '../../core/view/home_view.dart';
 import 'dart:io';
 
 class AuthenticationViewModel {
@@ -9,7 +8,6 @@ class AuthenticationViewModel {
 
  void authenticate() {
     
-
     while (true) {
       print("Please Enter Your Account Number");
 
