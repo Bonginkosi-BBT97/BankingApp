@@ -1,3 +1,4 @@
+import 'package:banking_app/core/view/core_view.dart';
 import 'package:flutter/material.dart';
 import 'package:banking_app/authentication/view_model/authentication_view_model.dart';
 import 'confirm_button.dart';
@@ -63,7 +64,7 @@ final AuthenticationViewModel authenticationViewModel =  AuthenticationViewModel
                         actions: [
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).pop(); // Dismiss the dialog
+                              Navigator.of(context).pop(); 
                               accountController.clear();
                               pinController.clear();
                             },
@@ -74,7 +75,8 @@ final AuthenticationViewModel authenticationViewModel =  AuthenticationViewModel
                     },
                   );
                 } else {
-                  print("Authentication Passed");
+                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CoreView()),
+                 );
                 }
         }
       ),

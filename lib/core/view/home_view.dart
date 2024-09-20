@@ -9,6 +9,5 @@ class HomeView {
   viewModel = ViewModel(account);
   viewModel.showAccountDetails();
 
-
      }
   }
